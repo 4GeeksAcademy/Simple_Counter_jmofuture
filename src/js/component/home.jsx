@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 
-
 const Home = () => {
   const [seconds, setSeconds] = useState(0);
   const [isCounting, setIsCounting] = useState(true);
@@ -50,6 +49,12 @@ const Home = () => {
     }
   }, [seconds, targetTime]);
 
+ 
+  const formatSeconds = (num) => {
+    let padded = String(num).padStart(6, "0");
+    return padded.split("").join(" ");
+  };
+
   return (
     <div className="container text-center mt-5">
       <div className="row justify-content-center">
@@ -57,7 +62,7 @@ const Home = () => {
           <i className="fas fa-clock fa-5x"></i>
         </div>
         <div className="col-8 d-flex justify-content-center">
-          <h1 className="display-4">{seconds}</h1>
+          <h1 className="display-4">{formatSeconds(seconds)}</h1>
         </div>
       </div>
       <div className="mt-3">
